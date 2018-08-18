@@ -1,0 +1,36 @@
+{
+  "private": false,
+  "name": "simple-web-component",
+  "version": "1.0.0",
+  "description": "Helper functions for creating simple web components",
+  "main": "index.js",
+  "scripts": {
+    "doc": "jsdoc -d docs index.js",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^4.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.3.1",
+    "express": "^4.15.4",
+    "jsdoc": "^3.5.5"
+  },
+  "peerDependencies": {
+    "webcomponentsjsv0": "git://github.com/webcomponents/webcomponentsjs.git#v0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Pilatch/simple-web-component.git"
+  },
+  "keywords": [
+    "web component",
+    "generate",
+    "custom element",
+    "helper function",
+    "register"
+  ],
+  "author": "Ethan B Martin"
+}

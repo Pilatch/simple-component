@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test simpleComponent</title>
+  <script src="/node_modules/webcomponentsjsv0/webcomponents-lite.js"></script>
+  <script src="/index.js"></script>
+  <link rel="import" href="simple-bling.html">
+  <link rel="import" href="search-bar.html">
+  <link rel="stylesheet" type="text/css" href="search-bar.css">
+  <style>
+    body {
+      background-color: gainsboro;
+    }
+  </style>
+</head>
+<body>
+  <p><code>&lt;simple-bling&gt;Gold diggin&#039;&lt;/simple-bling&gt;</code></p>
+  <simple-bling>Gold diggin'</simple-bling>
+
+  <p><code>&lt;search-bar placeholder=&quot;Find stuff&quot;&gt;&lt;/search-bar&gt;</code></p>
+  <search-bar placeholder="Find stuff"></search-bar>
+
+  <section>
+    <p>
+      <label>Term via key up events from the above search bar: </label>
+      <span id="key-up"></span>
+    </p>
+
+    <p>
+      <label>Term via submit events from the above search bar: </label>
+      <span id="submit"></span>
+    </p>
+  </section>
+</body>
+<script>
+  document.addEventListener('search-bar-input', function(event) {
+    document.getElementById('key-up').textContent = event.detail.term
+  })
+  document.addEventListener('search-bar-submit', function(event) {
+    document.getElementById('submit').textContent = event.detail.term
+  })
+</script>
+</html>
