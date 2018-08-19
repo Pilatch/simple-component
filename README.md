@@ -8,7 +8,11 @@ Here's how a browser would render it.
 
 ![bold and gold text](./img/gold-diggin.png)
 
-You can easily define that web component like so.
+## Usage
+
+We can easily define our `<bold-gold>` web component with a `<template>` and the `simpleComponent` function.
+
+The `id` of the template must be the same as the name of the web component you're registering, but with the suffix `-template`. Pass the name of the web component as the first argument to `simpleComponent`.
 
     <template id="bold-gold-template">
       <style>
@@ -23,8 +27,6 @@ You can easily define that web component like so.
       simpleComponent('bold-gold')
     </script>
 
-Note that the name of this module in NPM is "simple-web-component" because "simple-component" was taken. The JavaScript function you'll run is just named `simpleComponent`.
-
 For something fancier, provide an object with [lifecycle callbacks](https://www.html5rocks.com/en/tutorials/webcomponents/customelements/#lifecycle).
 
     <template id="simple-hello-template">
@@ -38,24 +40,37 @@ For something fancier, provide an object with [lifecycle callbacks](https://www.
     })
     </script>
 
-This does _not_ support slots, Shadow DOM, Shady CSS or anything fancy. We recommend that you style your simple components using [BEM](http://getbem.com/) to prevent styles from leaking out of your component. See [test/search-bar.css](./test/search-bar.css) for an example.
+## Browser Support
 
-Note that for full browser support, we recommend using simple-web-component alonside a dependency on webcomponents v0, which you would add to your package.json like so.
+This does _not_ support slots, Shadow DOM, Shady CSS or anything fancy. We recommend that you style your simple components using a [BEM](http://getbem.com/)-like approach to prevent styles from leaking out of your component. See [test/search-bar.css](./test/search-bar.css) for an example.
+
+Note that for full browser support, we recommend using simple-component-v0 alonside a dependency on webcomponents v0, which you would add to your `package.json`.
+
+## Installation
 
     "dependencies": {
       "webcomponentsjsv0": "git://github.com/webcomponents/webcomponentsjs.git#v0",
-      "simple-web-component": "git@github.com:Pilatch/simple-web-component.git"
+      "simple-component-v0": "^1.0.0"
     }
 
 Then install these, via `yarn install` and reference them in script tags.
 
     <script src="node_modules/webcomponentsjsv0/webcomponents-lite.js"></script>
-    <script src="node_modules/simple-web-component/index.js"></script>
+    <script src="node_modules/simple-component-v0/index.js"></script>
 
-For more information, clone this repository, start the server with
+## Documancy
 
-    yarn start
-
-Then navigate to [localhost:3007/docs](http://localhost:3007/docs) in your browser.
+For more information, clone this repository. Start the server with `yarn start` then navigate to [localhost:3007/docs](http://localhost:3007/docs) in your browser.
 
 Or see an even more complex (but still simple) example of a search-bar web component at [localhost:3007/test](http://localhost:3007/test).
+
+## Why?
+
+Why does this even exist, if web components v1 is the hotness, and simple-component-v0 doesn't offer any features?
+
+  * The v1 spec wants you to write a `class` for each web componenent. Should you support older browsers that don't know what a `class` is, what hoops are you willing to jump through to make that happen? Here's a [Stack Overflow answer](https://stackoverflow.com/questions/44729754/will-custom-elements-v1-ever-work-on-internet-explorer-11) to that.
+  * At the time of this writing Shadow DOM hasn't yet been implemented in all major browsers, and the polyfills for it are expensive.
+  * Some developers want their components to easily inherit global styles. For instance, you may want all your web components to have have their text in the same font as you're using on the page. [Again, what hoops do you want to jump through?](https://www.smashingmagazine.com/2016/12/styling-web-components-using-a-shared-style-sheet/)
+  * This works in code bases that use the web components v0 specification.
+  * Some developers may find the `<template>` approach more attractive than [JavaScript options](https://www.html5rocks.com/en/tutorials/webcomponents/customelements/).
+  * Virtual DOM rendering engines, such as those in [Elm](http://elm-lang.org/blog/blazing-fast-html), [React](https://reactjs.org/docs/faq-internals.html), and [Vue](https://vuejs.org/v2/guide/comparison.html), create and discard HTMLElements flippantly, so there's a benefit to having some simple web components with low performance overhead.

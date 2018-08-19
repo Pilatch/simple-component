@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "simple-web-component",
+  "name": "simple-component-v0",
   "version": "1.0.0",
   "description": "Helper functions for creating simple web components",
   "main": "index.js",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:Pilatch/simple-web-component.git"
+    "url": "git@github.com:Pilatch/simple-component-v0.git"
   },
   "keywords": [
     "web component",
