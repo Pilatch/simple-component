@@ -12,7 +12,7 @@ Here's how a browser would render it.
 
 We can easily define our `<bold-gold>` web component with a `<template>` and the `simpleComponent` function.
 
-The `id` of the template must be the same as the name of the web component you're registering, but with the suffix `-template`. Pass the name of the web component as the first argument to `simpleComponent`.
+The `id` of the template must be the same as the name of the web component we're registering, but with the suffix `-template`. Pass the name of the web component as the first argument to `simpleComponent`.
 
     <template id="bold-gold-template">
       <style>
@@ -42,11 +42,13 @@ For something fancier, provide an object with [lifecycle callbacks](https://www.
 
 ## Browser Support
 
-This does _not_ support slots, Shadow DOM, Shady CSS or anything fancy. We recommend that you style your simple components using a [BEM](http://getbem.com/)-like approach to prevent styles from leaking out of your component. See [test/search-bar.css](./test/search-bar.css) for an example.
+This does _not_ support [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot), [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), [Shady DOM](https://www.polymer-project.org/blog/shadydom), [style-scoping](https://www.polymer-project.org/1.0/docs/devguide/styling) or anything fancy. We recommend styling simple components using a [BEM](http://getbem.com/)-like approach to prevent styles from leaking out. See [test/search-bar.css](./test/search-bar.css) for an example.
 
-Note that for full browser support, we recommend using simple-component-v0 alonside a dependency on webcomponents v0, which you would add to your `package.json`.
+For full browser support use simple-component-v0 alonside a dependency on webcomponents v0.
 
 ## Installation
+
+In `package.json`
 
     "dependencies": {
       "webcomponentsjsv0": "git://github.com/webcomponents/webcomponentsjs.git#v0",
