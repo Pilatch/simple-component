@@ -72,11 +72,8 @@
       slot = templateContentClone.querySelector('slot')
 
       if (slot) {
-        for (i = 0; i < slot.childNodes.length; i++) {
-          slot.removeChild(slot.childNodes[i])
-        }
-        for (i = 0; i < toElement.childNodes.length; i++) {
-          slot.appendChild(toElement.childNodes[i])
+        while (toElement.childNodes.length) {
+          slot.appendChild(toElement.firstChild)
         }
       }
     }
