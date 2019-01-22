@@ -8,6 +8,10 @@ Here's how a browser would render it.
 
 ![bold and gold text](./img/gold-diggin.png)
 
+## Deprecated!
+
+Use [easy-element](https://www.npmjs.com/package/easy-element) instead.
+
 ## Usage
 
 We can easily define our `<bold-gold>` web component with a `<template>` and the `simpleComponent` function.

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test simple-bling</title>
+  <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
+  <script>
+    (function() {
+      if (
+        // No Reflect, no classes, no need for shim because native custom elements
+        // require ES2015 classes or Reflect.
+        window.Reflect === undefined ||
+        window.customElements === undefined ||
+        // The webcomponentsjs custom elements polyfill doesn't require
+        // ES2015-compatible construction (`super()` or `Reflect.construct`).
+        window.customElements.hasOwnProperty('polyfillWrapFlushCallback')
+      ) {
+        return;
+      }
+      const BuiltInHTMLElement = HTMLElement;
+      window.HTMLElement = /** @this {!Object} */ function HTMLElement() {
+        return Reflect.construct(
+            BuiltInHTMLElement, [], /** @type {!Function} */ (this.constructor));
+      };
+      HTMLElement.prototype = BuiltInHTMLElement.prototype;
+      HTMLElement.prototype.constructor = HTMLElement;
+      Object.setPrototypeOf(HTMLElement, BuiltInHTMLElement);
+    })();
+  </script>
+  <style>
+    body {
+      background-color: gainsboro;
+    }
+    simple-bling {
+      background-color: black;
+      color: gold;
+      font-weight: bold;
+      padding: 0.25em;
+    }
+  </style>
+</head>
+<body>
+  <p><code>&lt;simple-bling&gt;Gold diggin&#039;&lt;/simple-bling&gt;</code></p>
+  <simple-bling>Gold diggin'</simple-bling>
+</html>

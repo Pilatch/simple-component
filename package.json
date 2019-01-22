@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "simple-component-v0",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helper functions for creating simple web components",
   "main": "index.js",
   "scripts": {
